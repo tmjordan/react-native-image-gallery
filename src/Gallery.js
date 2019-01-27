@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { View, ViewPropTypes } from 'react-native';
 import PropTypes from 'prop-types';
-import { createResponder } from './libraries/GestureResponder';
+import { createResponder } from 'react-native-gesture-responder';
 import TransformableImage from './libraries/TransformableImage';
 import ViewPager from './libraries/ViewPager';
 
@@ -234,8 +234,7 @@ export default class Gallery extends PureComponent {
                   onViewTransformed && onViewTransformed(transform, pageId);
               })}
               onTransformGestureReleased={((transform) => {
-                  // need the 'return' here because the return value is checked in ViewTransformer
-                  return onTransformGestureReleased && onTransformGestureReleased(transform, pageId);
+                  onTransformGestureReleased && onTransformGestureReleased(transform, pageId);
               })}
               ref={((ref) => { this.imageRefs.set(pageId, ref); })}
               key={'innerImage#' + pageId}
